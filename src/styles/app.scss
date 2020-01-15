@@ -1,8 +1,5 @@
-@import './bp';
-
-/* stylelint-disable */
-@import '../../node_modules/node-normalize-scss/normalize';
-/* stylelint-enable */
+@import 'normalize';
+@import './helpers/bp';
 
 html {
     box-sizing: border-box;

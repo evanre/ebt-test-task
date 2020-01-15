@@ -1,12 +1,12 @@
 {
     "name": "sandbox",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Sandbox for fast prototyping",
     "repository": "https://github.com/evanre/sandbox",
     "main": "gulpfile.babel.js",
     "scripts": {
         "build": "gulp build",
-        "default": "gulp"
+        "default": "gulp --dev"
     },
     "author": "Eugene Zhuchenko",
     "license": "MIT",
@@ -14,16 +14,20 @@
         "@babel/core": "^7.8.3",
         "@babel/preset-env": "^7.8.3",
         "@babel/register": "^7.8.3",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
         "babelify": "^10.0.0",
         "browser-sync": "^2.26.7",
         "browserify": "^16.5.0",
-        "clean-css": "^4.2.1",
         "eslint": "^6.8.0",
         "eslint-config-airbnb-base": "^14.0.0",
         "eslint-plugin-import": "^2.20.0",
         "gulp": "^4.0.2",
+        "gulp-clean-css": "^4.2.0",
         "gulp-group-css-media-queries": "^1.2.2",
+        "gulp-if": "^3.0.0",
         "gulp-imagemin": "^6.2.0",
+        "gulp-inject-string": "git+https://github.com/mikehazell/gulp-inject-string.git",
         "gulp-load-plugins": "^2.0.2",
         "gulp-notify": "^3.2.0",
         "gulp-nunjucks-render": "^2.2.3",
@@ -31,18 +35,18 @@
         "gulp-sass": "^4.0.2",
         "gulp-sourcemaps": "^2.6.5",
         "lorem-ipsum": "^2.0.3",
-        "merge-stream": "^2.0.0",
-        "rimraf": "^3.0.0",
+        "pretty": "^2.0.0",
         "stylelint": "^13.0.0",
         "stylelint-config-sass-guidelines": "^6.2.0",
         "stylelint-order": "^4.0.0",
         "stylelint-scss": "^3.13.0",
         "vinyl-source-stream": "^2.0.0",
-        "vinyl-buffer": "^1.0.1",
         "yargs": "^15.1.0"
     },
     "dependencies": {
+        "babel-eslint": "^10.0.3",
         "deepmerge": "^4.2.2",
+        "gulp-uglify": "^3.0.2",
         "node-normalize-scss": "^8.0.1"
     }
 }
