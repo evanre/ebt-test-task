@@ -1,3 +1,17 @@
-body {
-    //background: red;
+@import './bp';
+
+/* stylelint-disable */
+@import '../../node_modules/node-normalize-scss/normalize';
+/* stylelint-enable */
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    color: inherit;
 }

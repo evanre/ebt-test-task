@@ -30,11 +30,8 @@ export default class ResponsiveEvent {
         };
 
         if (options instanceof Object) {
-            this.options = helpers.extendDefaults(this.options, options);
+            this.options = helpers.merge(this.options, options);
         }
-
-        // 1.0.1 In future we can attach functions in some kind of a stack to call them without event
-        // this.stack = [];
 
         this.event = null;
 
@@ -43,7 +40,7 @@ export default class ResponsiveEvent {
 
     init() {
         const size = this.getSize(window.innerWidth);
-        this.IEPolyfill();
+        ResponsiveEvent.IEPolyfill();
         this.event = new CustomEvent(this.options.eventName, {
             bubbles: true,
             cancelable: false,
@@ -70,16 +67,13 @@ export default class ResponsiveEvent {
     checkView(forceUpdate = false) {
         const view = this.getSize(window.innerWidth);
         if (forceUpdate || view !== window[this.options.eventName]) {
-            // 1.0.1 In future we can attach functions in some kind of a stack to call them without event
-            // this.stack.forEach(f => helpers.executeIfFunction(f.bind(view)));
-
             window[this.options.eventName] = view;
             this.event.detail[this.options.eventName] = view;
             window.dispatchEvent(this.event);
         }
     }
 
-    IEPolyfill() {
+    static IEPolyfill() {
         try {
             const event = new CustomEvent('IE has CustomEvent, but doesn\'t support constructor');
         } catch (e) {

@@ -1,23 +1,10 @@
+import deepmerge from 'deepmerge';
+
 export const isArr = (arr) => arr && Array.isArray(arr);
 
 export const isObj = (obj) => obj && typeof obj === 'object';
 
-export const extendDefaults = (...objects) => objects.reduce((prev, curr) => {
-    const newObj = {};
-    Object.keys(curr)
-        .forEach((k) => {
-            if (isArr(prev[k]) && isArr(curr[k])) {
-                newObj[k] = prev[k].concat(...curr[k]);
-            } else if (isObj(prev[k]) && isObj(curr[k])) {
-                newObj[k] = extendDefaults(prev[k], curr[k]);
-            } else {
-                newObj[k] = curr[k];
-            }
-        });
-
-    return prev;
-}, {});
-
+export const merge = (x = {}, y = {}) => deepmerge(x, y, { arrayMerge: (_, src) => src });
 
 /**
  * Debounce execution of a function. Debouncing, unlike throttling,
@@ -32,9 +19,8 @@ export const extendDefaults = (...objects) => objects.reduce((prev, curr) => {
  */
 export const debounce = (fn, delay) => {
     let timer = null;
-    return () => {
+    return (...args) => {
         const context = this;
-        const args = arguments;
         clearTimeout(timer);
         timer = setTimeout(() => {
             fn.apply(context, args);
@@ -72,4 +58,10 @@ export const throttle = (fn, threshold = 250, scope) => {
             fn.apply(context, args);
         }
     };
+};
+
+export const clearElement = (el) => {
+    while (el.firstChild) {
+        el.removeChild(el.firstChild);
+    }
 };
