@@ -1,3 +1,4 @@
+import * as helpers from './helpers';
 import ResponsiveEvent from './responsive-event';
 
 const event = new ResponsiveEvent();
@@ -9,4 +10,6 @@ window.addEventListener('load', () => {
     window.addEventListener('responsive', () => {
         console.log('current breakpoint: ', window.responsive);
     });
+
+    event.checkView(true);
 });

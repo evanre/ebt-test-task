@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'icons';
+    font-style: normal;
+    font-weight: normal;
+    src: url('#{$asset-path}icons.woff2') format('woff2'),
+        url('#{$asset-path}icons.woff') format('woff');
+}
+
+%icon {
+    display: inline-block;
+    font-family: 'icons';
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-decoration: inherit;
+    text-transform: none;
+}
+
+$icons: (
+    twitter: '\E001',
+    facebook: '\E002',
+    instagram: '\E003',
+);

@@ -3,14 +3,12 @@ import browser from 'browser-sync';
 import { argv } from 'yargs';
 import config from '../config.json';
 
-const flags = {
+const $ = {
+    plugin: plugins(),
+
     port: Number(argv.port || argv.p) || 3002,
 
     IS_DEV: !!(argv.dev),
-};
-
-const $ = {
-    plugin: plugins(),
 
     onError: () => $.plugin.notify.onError({
         title: '<%= error.plugin %>',
@@ -26,7 +24,7 @@ const $ = {
     },
 
     dest(obj) {
-        return obj[flags.env];
+        return obj[$.flags.env];
     },
 
     reload(done) {
@@ -35,7 +33,10 @@ const $ = {
     },
 
     config,
-    ...flags,
 };
 
-module.exports = $;
+console.log(`IS_DEV: ${$.IS_DEV}`);
+
+export const { errorHandler } = $;
+
+export default $;

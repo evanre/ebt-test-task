@@ -5,6 +5,7 @@ const server = (done) => {
     browser.init({
         server: $.config.templates.dest,
         port: $.port,
+        open: false,
         watchOptions: {
             // This introduces a small delay when watching for file change events
             // to avoid triggering too many reloads
@@ -14,4 +15,4 @@ const server = (done) => {
     done();
 };
 
-module.exports = server;
+export default server;

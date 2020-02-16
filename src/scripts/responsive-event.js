@@ -52,10 +52,7 @@ export default class ResponsiveEvent {
         // Attach variable to global scope at the very beginning
         window[this.options.eventName] = size;
 
-        // Force checkView to dispatch the event on load.
-        window.addEventListener('load', this.checkView.bind(this, true));
-
-        window.addEventListener('resize', helpers.debounce(this.checkView.bind(this), 50));
+        window.addEventListener('resize', helpers.throttle(this.checkView.bind(this, false), 250));
     }
 
     getSize(width) {

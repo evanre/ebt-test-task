@@ -12,7 +12,7 @@ const manageEnv = (env) => {
         makeSentence = false,
         sentenceLowerBound = 5,
         sentenceUpperBound = 15,
-        format = 'html',
+        format = 'plain',
     ) => {
         const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
         const str = loremIpsum({
@@ -26,8 +26,8 @@ const manageEnv = (env) => {
         return units === 'words' && makeSentence ? `${capitalize(str)}.` : str;
     });
 
-    env.addFilter('getUsers', (params, cb) => {
-        https.get(`https://randomuser.me/api/?exc=login,location&nat=au,ca,de,dk,fr,gb,us${params}`, (resp) => {
+    env.addFilter('getUsers', (str, params = '', cb) => {
+        https.get(`https://randomuser.me/api/?exc=login,location&nat=au,ca,gb,us${params}`, (resp) => {
             let data = '';
 
             // A chunk of data has been recieved.
@@ -44,9 +44,11 @@ const manageEnv = (env) => {
 
     env.addFilter('slug', (str) => str && str.replace(/\s/g, '-', str).toLowerCase());
 
-    env.addGlobal('imgPath', $.config.images.inline);
+    env.addGlobal('assetPath', $.config.images.inline);
 
     env.addGlobal('picsumIds', $.config.picsumIds);
+
+    env.addGlobal('isDEV', $.IS_DEV);
 
     env.addGlobal('merge', (x = {}, y = {}) => deepmerge(x, y, { arrayMerge: (_, src) => src }));
 
@@ -54,7 +56,7 @@ const manageEnv = (env) => {
 
     env.addFilter('interpolate', (str) => env.renderString(str));
 
-    env.addFilter('unique', (str) => `${str}-${Math.random() * 0xffffff | 0}`);
+    env.addGlobal('unique', () => Math.random() * 0xffffff | 0);
 };
 
 const templates = () => gulp.src(`${$.config.templates.src}/*.njk`)
@@ -68,4 +70,4 @@ const templates = () => gulp.src(`${$.config.templates.src}/*.njk`)
     .pipe($.plugin.injectString.custom((t) => pretty(t, { ocd: true })))
     .pipe(gulp.dest($.config.templates.dest));
 
-module.exports = templates;
+export default templates;

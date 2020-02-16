@@ -6,10 +6,12 @@
     "rules": {
         "indent": ["error", 4],
         "import/no-extraneous-dependencies": "off",
-        "no-bitwise": ["error", { "int32Hint": true }],
         "max-len": ["error", { "code": 160 }],
+        "no-bitwise": ["error", { "int32Hint": true }],
         "no-console": "off",
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "object-curly-newline": ["error", { "consistent": true }],
+        "quote-props": ["error", "consistent"]
     },
     "env": {
         "browser": true,
