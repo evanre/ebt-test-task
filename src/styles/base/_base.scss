@@ -51,9 +51,13 @@ body {
     cursor: pointer;
     font-weight: $bold;
     text-align: center;
-    transition: background-color 0.4s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
 
     @include on-event {
         background-color: $color-1--2;
+    }
+
+    &::after {
+        content: ' >';
     }
 }
