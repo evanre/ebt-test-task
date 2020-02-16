@@ -3,28 +3,33 @@
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>{{ titlePage }}</title>
-    <link rel="stylesheet" media="all" href="app.css"/>
+    <link rel="stylesheet" media="all" href="app.css?v={{ unique() }}"/>
 </head>
 <body>
-<div id="page" class="page">
-    {% block header %}
-        <header id="header" class="header" role="banner">
-            <h1>Evanre's sandbox</h1>
-        </header>
-    {% endblock %}
-    <main class="main" role="main">
-        <div class="container">
+<div id="page" class="site-wrapper-out">
+    <div class="site-wrapper">
+        <a class="skip-link ghost" href="#content">Skip to content</a>
+        <!-- Header start -->
+        {%- block header -%}
+            {%- include "partials/header.njk" -%}
+        {%- endblock -%}
+        <!-- Header end -->
+
+        <!-- Main content start -->
+        <main class="site-main">
             {% block content %}{% endblock %}
-        </div>
-    </main>
-    {% block footer %}
-        <footer id="footer" class="footer" role="contentinfo">
-            <p>Some creds may go here</p>
-        </footer>
-    {% endblock %}
+        </main>
+        <!-- Main content end -->
+
+        <!-- Footer start -->
+        {%- block footer -%}
+            {%- include "partials/footer.njk" -%}
+        {%- endblock -%}
+        <!-- Footer end -->
+    </div>
 </div>
-<script src="script.js"></script>
+<script src="script.js?v={{ unique() }}"></script>
 </body>
 </html>

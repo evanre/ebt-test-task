@@ -1,0 +1,156 @@
+// Color contrast
+// Function that calculates if color needs to be light or dark.
+@function color-contrast($color) {
+    @return if(lightness($color) < 51, #FFF, #000);
+}
+
+// Calcul em size depending of the context
+// Use em(fontSizeDoIWantInEm, fontContextInEM)
+// padding: 0 em(3.5, 2.2) 0 em(5, 2.2);
+@function em($fontSize, $context) {
+    @return #{$fontSize/$context}em;
+}
+
+/// Dependency - str-replace mixin from https://css-tricks.com/snippets/sass/str-replace-function/
+/// Replace `$search` with `$replace` in `$string`
+/// @author Hugo Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+// Convenience function used to set content property
+@function cnt($var) {
+    @return unquote('\'#{ $var }\'');
+}
+
+@function spacing($multi) {
+    @return $flex-gutter * $multi;
+}
+
+@function s($multi) {
+    @return spacing($multi);
+}
+
+// Set width and height for element
+@mixin size($width, $height: $width) {
+    height: $height;
+    width: $width;
+}
+
+// Set absolute position with settings
+@mixin absolute($top: null, $right: null, $bottom: null, $left: null) {
+    bottom: $bottom;
+    left: $left;
+    position: absolute;
+    right: $right;
+    top: $top;
+}
+
+// Set fixed position with settings
+@mixin fixed($top: auto, $right: auto, $bottom: auto, $left: auto) {
+    bottom: $bottom;
+    left: $left;
+    position: fixed;
+    right: $right;
+    top: $top;
+}
+
+// Set relative position with settings
+@mixin relative($top: auto, $right: auto, $bottom: auto, $left: auto) {
+    bottom: $bottom;
+    left: $left;
+    position: relative;
+    right: $right;
+    top: $top;
+}
+
+@mixin reset-position {
+    bottom: auto;
+    left: auto;
+    position: static;
+    right: auto;
+    top: auto;
+}
+
+@mixin context {
+    &::before {
+        bottom: 0;
+        content: '';
+        display: block;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 30;
+    }
+}
+
+@mixin on-event($self: false) {
+    @if $self {
+        &,
+        &:hover,
+        &:focus {
+            @content;
+        }
+    } @else {
+        &:hover,
+        &:focus {
+            @content;
+        }
+    }
+}
+
+@mixin icon($name, $position: before) {
+    &::#{$position} {
+        @extend %icon;
+        content: map-get($icons, $name);
+    }
+}
+
+%visually-hidden {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px !important;
+    left: -9999px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    top: auto !important;
+    width: 1px !important;
+}
+
+// Default extender for clear-fix;
+%clear-fix {
+    &::after {
+        clear: both;
+        content: '';
+        display: block;
+        height: 0;
+        overflow: hidden;
+        speak: none;
+        visibility: hidden;
+    }
+}
+
+%abs-center {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// Invisible content but accessible
+.ghost,
+.invisible {
+    @extend %visually-hidden;
+}

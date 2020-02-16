@@ -1,0 +1,46 @@
+// Variables
+$asset-path: '' !default;
+
+// Site colors
+// ## color-1
+$color-1--1: #0066c3 !default;
+$color-1--2: darken($color-1--1, 10) !default;
+
+// ## color-2
+
+// ## Color-3
+$color-3--1: #faf8f5 !default;
+$color-3--2: #ababab !default;
+$color-3--3: #888 !default;
+$color-3--4: #ccc !default;
+$color-3--5: #222 !default;
+$color-3--6: #e6e6e6 !default;
+
+// # Helper colors
+$color-black: #000;
+$color-white: #fff;
+$color-red: #fe0000;
+$color-green: #278417;
+
+// ## Color social networks
+$socials: (
+    twitter: #00acee,
+    facebook: #3b5998,
+    instagram: #dd2a7b,
+    vk: #5181b8,
+    rss: #ee802f,
+);
+
+// Site fonts // http://melchoyce.github.io/fontstacks/
+$typo-1: 'Proxima Nova', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif !default;
+
+// font weight
+$thin: 100;
+$extralight: 200;
+$light: 300;
+$normal: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+$extrabold: 800;
+$black: 900;

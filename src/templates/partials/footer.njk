@@ -1,0 +1,31 @@
+<footer id="colophon" class="site-footer footer" role="contentinfo">
+    <div class="container">
+        <section class="footer__section">
+            <h2>Quick links</h2>
+            <nav class="footer__nav"></nav>
+        </section>
+
+        <section class="footer__section">
+            <h2>Locations</h2>
+            <nav class="footer__nav"></nav>
+        </section>
+
+        <section class="footer__section">
+            <nav class="footer__nav footer-social">
+                {%- for social in ['facebook', 'twitter', 'linkedin'] -%}
+                    <a class="footer-social__link --{{ social }}" href="#"><span class="ghost">{{ social | capitalize }}</span></a>
+                {%- endfor -%}
+            </nav>
+
+            <form action="#" class="footer-newsletter">
+                {#form#}
+            </form>
+
+            {# logo1 #}
+            {# logo2 #}
+
+            <p class="footer-license">&copy;205-2018 Copyright Enterprise Financial Services Corp. <small>Click links may leave Enterprise Bank & Trust website. Enterprise Bank & Trust is not responsible of the content managed on third party sites.</small></p>
+        </section>
+
+    </div>
+</footer><!-- #colophon -->

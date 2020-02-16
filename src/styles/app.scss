@@ -1,14 +1,24 @@
+// Import configuration
+@import './helpers/config';
+
+// Import Libs
+/* stylelint-disable */
 @import 'normalize';
+/* stylelint-enable */
+
+// Import helpers
 @import './helpers/bp';
+@import './helpers/flexbox';
+@import './helpers/grid';
+@import './helpers/helpers';
 
-html {
-    box-sizing: border-box;
-    font-size: 62.5%;
-}
+// Import custom Icons
+@import './icons';
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-    color: inherit;
-}
+// Base
+@import './base/base';
+@import './base/wrappers';
+
+// Partials
+@import './partials/header';
+@import './partials/footer';

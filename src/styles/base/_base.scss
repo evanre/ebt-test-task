@@ -1,0 +1,28 @@
+// @name Html
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    color: inherit;
+}
+
+// @name Body
+body {
+    background-color: $color-white;
+    font-family: $typo-1;
+    font-weight: $normal;
+    overflow-x: hidden;
+
+    &.-overflow-hidden {
+        overflow: hidden;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
