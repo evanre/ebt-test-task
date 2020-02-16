@@ -4,15 +4,18 @@
         <div class="site-branding">
             <h1 class="site-title">
                 <a href="#" rel="home">
-                    <img src="img/ui/veskip-logo.svg" alt="EB&T logo">
+                    <img src="https://via.placeholder.com/290x60?text=EBT+Logo" alt="EB&T logo">
                 </a>
             </h1>
-        </div><!-- .site-branding -->
-
-        <button id="menu-toggle" class="menu-toggle"><?php _e( 'Menu', 'kvadroom' ); ?></button>
-
-        <div id="site-header-menu" class="site-header-menu">
-            <nav id="site-navigation" class="main-navigation" aria-label="Primary Menu"></nav><!-- .main-navigation -->
         </div>
+
+        <button id="menu-toggle" class="menu-toggle">Menu</button>
+
+        <nav id="site-navigation" data-move=".site-branding" data-insert="start" data-on-breakpoints="tablet desktop" class="main-navigation" aria-label="Primary Menu">
+            <a href="#">About</a>
+            <a href="#">Video stories</a>
+            <a href="#">Case Studies</a>
+            <a href="#">Contact</a>
+        </nav>
     </div>
 </header>

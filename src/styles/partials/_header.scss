@@ -1,0 +1,43 @@
+.header {
+    background-color: $color-white;
+}
+
+.main-navigation {
+    @include flex(null, null, space-around, center, null);
+    height: 12rem;
+
+    *:nth-child(n+4) {
+        order: 2;
+    }
+
+    .site-branding {
+        order: 1;
+    }
+
+    a {
+        text-transform: uppercase;
+        font-weight: $bold;
+        color: $color-1--1;
+        font-size: 2rem;
+    }
+}
+
+.site-branding {
+    h1 {
+        margin: 0;
+    }
+
+    a {
+        display: block;
+    }
+
+    img {
+        display: block;
+    }
+}
+
+.menu-toggle {
+    @include breakpoint(medium) {
+        display: none;
+    }
+}
