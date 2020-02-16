@@ -1,0 +1,40 @@
+.hero {
+    background-size: cover;
+    color: $color-white;
+    padding: 20rem 0;
+    position: relative;
+    text-align: center;
+
+    &::before {
+        @include absolute(0, 0, 0, 0);
+        background-color: rgba($color-1--1, 0.3);
+        content: '';
+    }
+
+    > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    &__title {
+        font-size: 5.6rem;
+        font-weight: $normal;
+        text-transform: uppercase;
+    }
+
+    &__subtitle {
+        text-transform: uppercase;
+        font-size: 3.2rem;
+        font-weight: $bold;
+    }
+
+    &__btn {
+        font-size: 2rem;
+        padding: 0.25em 2em;
+        text-transform: uppercase;
+
+        &::after {
+            content: ' >';
+        }
+    }
+}

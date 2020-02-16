@@ -38,22 +38,22 @@ body {
     input,
     button {
         border: 0;
+        font-size: 1.8rem;
         height: 5rem;
         line-height: 5rem;
         padding: 0 1em;
-        font-size: 1.8rem;
         text-transform: uppercase;
     }
+}
 
-    button {
-        background-color: $color-1--1;
-        font-weight: $bold;
-        transition: background-color 0.4s ease;
-        cursor: pointer;
-        text-align: center;
+.btn {
+    background-color: $color-1--1;
+    cursor: pointer;
+    font-weight: $bold;
+    text-align: center;
+    transition: background-color 0.4s ease;
 
-        @include on-event {
-            background-color: $color-1--2;
-        }
+    @include on-event {
+        background-color: $color-1--2;
     }
 }
