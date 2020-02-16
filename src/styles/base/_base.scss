@@ -26,3 +26,34 @@ body {
         text-decoration: none;
     }
 }
+
+.form {
+    @include flex(null, null, null, null, null);
+    margin-bottom: 3rem;
+
+    * + * {
+        margin-left: 1rem;
+    }
+
+    input,
+    button {
+        border: 0;
+        height: 5rem;
+        line-height: 5rem;
+        padding: 0 1em;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+    }
+
+    button {
+        background-color: $color-1--1;
+        font-weight: $bold;
+        transition: background-color 0.4s ease;
+        cursor: pointer;
+        text-align: center;
+
+        @include on-event {
+            background-color: $color-1--2;
+        }
+    }
+}

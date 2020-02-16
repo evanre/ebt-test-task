@@ -1,0 +1,95 @@
+.footer {
+    background-color: $color-1--2;
+    color: $color-white;
+    padding: 10rem 0 8rem;
+
+    .container {
+        @include flex(null, null, space-between, null, null);
+
+        @include breakpoint(small down) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__section + &__section {
+        margin-left: 5rem;
+    }
+
+    &__section {
+        max-width: 40rem;
+
+        h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+    }
+
+    &__nav {
+        a {
+            display: block;
+            color: $color-1--1;
+            font-size: 1.6rem;
+            margin-bottom: 0.5em;
+
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+
+        &.--locations {
+            a {
+                text-transform: uppercase;
+                font-weight: $bold;
+
+                &::after {
+                    content: ' >';
+                }
+            }
+        }
+    }
+
+    &__license {
+        font-size: 1.6rem;
+
+        small {
+            display: block;
+            margin-top: 1em;
+            font-size: 0.8em;
+            font-style: italic;
+        }
+    }
+}
+
+.footer-social {
+    @include flex(null, null, null, null, null);
+    margin: 0 0 3rem -0.75rem;
+
+    &__link {
+        color: $color-1--1;
+        font-size: 2.4rem;
+        margin: 0 0.75rem;
+        padding: 0.5rem;
+        text-align: center;
+        transition: color ease 0.3s;
+
+        &::before {
+            @extend %icon;
+            display: block;
+        }
+
+        @include on-event() {
+            color: $color-white;
+        }
+
+        @each $vendor in (facebook, twitter, linkedin) {
+            &.--#{$vendor} {
+                &::before {
+                    @debug &;
+                    content: map-get($icons, $vendor);
+                }
+            }
+        }
+    }
+}
+

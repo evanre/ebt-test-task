@@ -2,29 +2,42 @@
     <div class="container">
         <section class="footer__section">
             <h2>Quick links</h2>
-            <nav class="footer__nav"></nav>
+            <nav class="footer__nav">
+                {%- for item in ['About', 'Video Stories', 'Case Studies', 'Contact', 'Privacy Policy', 'Sitemap'] -%}
+                    <a href="#">{{ item }}</a>
+                {%- endfor -%}
+            </nav>
         </section>
 
         <section class="footer__section">
             <h2>Locations</h2>
-            <nav class="footer__nav"></nav>
+            <nav class="footer__nav --locations">
+                {%- for city in ['St. Louis', 'Kansas City', 'Pheonix'] -%}
+                    <a href="#">{{ city}}</a>
+                {%- endfor -%}
+            </nav>
         </section>
 
         <section class="footer__section">
-            <nav class="footer__nav footer-social">
+            <nav class="footer-social">
                 {%- for social in ['facebook', 'twitter', 'linkedin'] -%}
                     <a class="footer-social__link --{{ social }}" href="#"><span class="ghost">{{ social | capitalize }}</span></a>
                 {%- endfor -%}
             </nav>
 
-            <form action="#" class="footer-newsletter">
-                {#form#}
+            <form action="#" class="footer-newsletter form">
+                <input type="email" placeholder="Email address" required>
+                <button class="btn" type="submit">Submit</button>
             </form>
 
-            {# logo1 #}
-            {# logo2 #}
+            <a href="#" rel="home">
+                <img src="https://via.placeholder.com/290x60?text=EBT+Logo" alt="EB&T logo">
+            </a>
+            <div>
+                <img src="https://via.placeholder.com/90x20?text=Member+FDIC" alt="FDIC logo">
+            </div>
 
-            <p class="footer-license">&copy;205-2018 Copyright Enterprise Financial Services Corp. <small>Click links may leave Enterprise Bank & Trust website. Enterprise Bank & Trust is not responsible of the content managed on third party sites.</small></p>
+            <p class="footer__license">&copy;205-2018 Copyright Enterprise Financial Services Corp.<small>Click links may leave Enterprise Bank & Trust website. Enterprise Bank & Trust is not responsible of the content managed on third party sites.</small></p>
         </section>
 
     </div>
