@@ -181,7 +181,7 @@ $container-maw: 1232px !default; // Max width of site container
 $container-miw: 320px !default; // Min width of site container
 $flex-gutter: 1.6rem !default; // Columns gutter width
 $flex-columns: 12 !default; // Quantity of columns
-$flex-turn-on: true !default; // Turn on / off grid. If turned off, there will be generated only containers.
+$flex-turn-on: false !default; // Turn on / off grid. If turned off, there will be generated only containers.
 
 // Namespaces
 $flex-nmsp-cont-fixed: 'container' !default; // Name of fixed site container

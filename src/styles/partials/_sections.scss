@@ -7,7 +7,7 @@
 
     &::before {
         @include absolute(0, 0, 0, 0);
-        background-color: rgba($color-1--1, 0.3);
+        background-color: rgba($color-1--1, 0.5);
         content: '';
     }
 
@@ -39,6 +39,181 @@
     }
 }
 
+.carousel {
+    $this: &;
+    @include flex(null, wrap);
+    align-self: flex-start;
+    position: relative;
+    width: 100%;
+
+    @include breakpoint(small down) {
+        margin-bottom: 2rem;
+    }
+
+    &__container {
+        display: block;
+        margin-bottom: 1rem;
+        width: 100%;
+
+        @include breakpoint(small down) {
+            margin-bottom: 0;
+        }
+    }
+
+    &__title {
+        @extend %visually-hidden;
+    }
+
+    &__picture {
+        display: block;
+        width: 100%;
+
+        img {
+            display: block;
+        }
+    }
+
+    #{$this}__content {
+        display: block;
+        width: 100%;
+    }
+
+    //&__bullets {
+    //    @include flex(null, null, center, null, null);
+    //    list-style-type: none;
+    //    margin: 0;
+    //    order: 1;
+    //    padding: 0;
+    //    text-align: center;
+    //
+    //    @include breakpoint(small down) {
+    //        width: 100%;
+    //    }
+    //
+    //    li {
+    //        display: block;
+    //        margin: 0.3rem;
+    //    }
+    //}
+
+    //&__bullets-item {
+    //    @include size(1.6rem);
+    //    background: none;
+    //    border: 0;
+    //    color: #c4c4c4;
+    //    cursor: pointer;
+    //    display: block;
+    //    font-size: 1rem;
+    //    padding: 0;
+    //    position: relative;
+    //    transition: color 0.5s;
+    //
+    //    @include icon(cirlce);
+    //
+    //    &::before {
+    //        @include absolute(50%, null, null, 50%);
+    //        transform: translate(-50%, -50%);
+    //    }
+    //
+    //    &:focus,
+    //    &:hover,
+    //    &:active,
+    //    &[aria-selected=true] {
+    //        color: $color-1--1;
+    //    }
+    //
+    //    &:focus,
+    //    &:active {
+    //        outline: 2px dashed $color-1--1;
+    //        outline: 2px auto $color-1--1;
+    //    }
+    //}
+
+    &__arrow {
+        background: transparent;
+        border: 0;
+        color: $color-1--1;
+        cursor: pointer;
+        font-size: 4rem;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+
+        &--prev {
+            left: 2rem;
+
+            &::before {
+                content: '<';
+            }
+        }
+
+        &--next {
+            right: 2rem;
+
+            &::before {
+                content: '>';
+            }
+        }
+    }
+
+    // transition none
+    &-transition-none #{$this}__content {
+        white-space: normal;
+
+        &[aria-hidden=true] {
+            display: none;
+        }
+    }
+
+    // transition slide
+    &-transition-slide {
+        #{$this}__container {
+            @include flex(null, null, null, flex-start, null);
+            overflow: hidden;
+        }
+
+        #{$this}__content {
+            flex: 0 0 100%;
+            position: relative;
+            transition: visibility 0s ease, transform 0.5s ease-in;
+            transition-delay: 0s;
+            vertical-align: top;
+            visibility: visible;
+            white-space: normal;
+
+            &[aria-hidden='true'] {
+                transition-delay: 0.5s, 0s;
+                visibility: hidden;
+            }
+
+        }
+
+        @for $i from 0 through 10 {
+            &[data-carousel-active-slide='#{$i}'] #{$this}__content {
+                transform: translateX(percentage($i * -1));
+            }
+        }
+    }
+
+    // transition fade
+    &-transition-fade #{$this}__content {
+        animation: fadein 2s;
+        white-space: normal;
+
+        &[aria-hidden=true] {
+            display: none;
+        }
+
+        @keyframes fadein {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    }
+}
+
 .testimonial {
     margin-bottom: 8rem;
     margin-top: 8rem;
@@ -54,8 +229,8 @@
 
     figcaption {
         color: $color-1--1;
-        font-size: 1.4rem;
         float: right;
+        font-size: 1.4rem;
         text-transform: uppercase;
 
         strong {
@@ -93,9 +268,9 @@
         color: $color-1--1;
         display: table;
         font-size: 2rem;
+        margin: 4rem auto 0;
         padding: 0.25em 2em;
         text-transform: uppercase;
-        margin: 4rem auto 0;
 
         @include on-event {
             background-color: $color-1--1;

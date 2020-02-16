@@ -12,6 +12,22 @@
         </div>
     </section>
 
+    <div class="carousel" data-carousel-hx-existing="h2">
+        <div class="carousel__container">
+            {%- for item in range(0, 5) -%}
+                <div class="carousel__content">
+                    <h2 class="carousel__title">{{ lorem(1) }}</h2>
+                    <picture class="carousel__picture">
+                        {%- set randomId = picsumIds | random %}
+                        <source srcset="//picsum.photos/id/{{ randomId }}/768/456" media="(max-width: 767px)">
+                        <source srcset="//picsum.photos/id/{{ randomId }}/1280/765" media="(max-width: 1279px)">
+                        <img src="//picsum.photos/id/{{ randomId }}/2880/600" alt="image description">
+                    </picture>
+                </div>
+            {%- endfor -%}
+        </div>
+    </div>
+
     <section class="testimonial container">
         <figure>
             <blockquote>Knowing that I have people at my bank dedicated to help my business succeed with opportunities and advice is invaluable</blockquote>

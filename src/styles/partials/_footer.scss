@@ -26,8 +26,8 @@
 
     &__nav {
         a {
-            display: block;
             color: $color-1--1;
+            display: block;
             font-size: 1.6rem;
             margin-bottom: 0.5em;
 
@@ -39,8 +39,8 @@
 
         &.--locations {
             a {
-                text-transform: uppercase;
                 font-weight: $bold;
+                text-transform: uppercase;
 
                 &::after {
                     content: ' >';
@@ -54,9 +54,9 @@
 
         small {
             display: block;
-            margin-top: 1em;
             font-size: 0.8em;
             font-style: italic;
+            margin-top: 1em;
         }
     }
 }
@@ -85,7 +85,6 @@
         @each $vendor in (facebook, twitter, linkedin) {
             &.--#{$vendor} {
                 &::before {
-                    @debug &;
                     content: map-get($icons, $vendor);
                 }
             }
